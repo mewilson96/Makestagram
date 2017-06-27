@@ -14,6 +14,7 @@
 		C874714D1F02B55E0051EB5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C874714A1F02B55E0051EB5F /* LaunchScreen.storyboard */; };
 		C87471501F02B5F60051EB5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C874714E1F02B5F60051EB5F /* GoogleService-Info.plist */; };
 		C87471511F02B5F60051EB5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C874714F1F02B5F60051EB5F /* ViewController.swift */; };
+		C87471571F02C6870051EB5F /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C87471561F02C6870051EB5F /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C874714A1F02B55E0051EB5F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Storyboards/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C874714E1F02B5F60051EB5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Supporting/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C874714F1F02B5F60051EB5F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Controllers/ViewController.swift; sourceTree = "<group>"; };
+		C87471561F02C6870051EB5F /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				C87471481F02B55E0051EB5F /* Main.storyboard */,
+				C87471561F02C6870051EB5F /* Login.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				C874713C1F02A9880051EB5F /* Assets.xcassets in Resources */,
 				C874714D1F02B55E0051EB5F /* LaunchScreen.storyboard in Resources */,
 				C87471501F02B5F60051EB5F /* GoogleService-Info.plist in Resources */,
+				C87471571F02C6870051EB5F /* Login.storyboard in Resources */,
 				C874714B1F02B55E0051EB5F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
