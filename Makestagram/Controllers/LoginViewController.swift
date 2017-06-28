@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseAuthUI
+import FirebaseDatabase
 
 typealias FIRUser = FirebaseAuth.User
 
@@ -42,8 +43,6 @@ class LoginViewController: UIViewController {
         present(authViewController, animated: true)
     }
     
-
-
 }
 
 extension LoginViewController: FUIAuthDelegate {
@@ -53,8 +52,24 @@ extension LoginViewController: FUIAuthDelegate {
         
         if let error = error {
             assertionFailure("Error sign in: \(error.localizedDescription)")
-            return
+            
         }
-        print("handle user signup / login")
+        //making sure FIRUser has been authenticated with FirebaseAuth and it's not nil
+        guard let user = user
+            else{ return }
+
+        //Create a relative path to the reference of the user's information
+        let userRef = Database.database().reference().child("users").child(user.uid)
+        
+        //Read the path that was created and pass an event closure to handle the data thatis passed back from the databaseNat
+        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            //Checking that the snapshot exists
+            if let user = User(snapshot: snapshot) {
+                print("Welcome back, \(user.username).")
+            } else {
+                print("New user!")
+            }
+        })
     }
 }
