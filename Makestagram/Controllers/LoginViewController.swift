@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseAuthUI
+
+typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
 
@@ -23,22 +27,34 @@ class LoginViewController: UIViewController {
     //MARK - IBActions
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         print("Login Button Tapped")
+        
+        //access the FUIAuth default auth UI singleton
+        guard let authUI = FUIAuth.defaultAuthUI()
+            else {return}
+        
+        //set FUITAuth's singleton delegate
+        //set LoginViewController to be a delegate of authUI
+        authUI.delegate = self
+        
+        //present the auth view controller
+        //when presented Firebase presents its own UI to handle loggin in the user
+        let authViewController = authUI.authViewController()
+        present(authViewController, animated: true)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+
+}
+
+extension LoginViewController: FUIAuthDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //Adding FirebaseAuth.User prevents namespace conflicts to which USer type we're referring to in the code
+    func authUI(_ authUI: FUIAuth, didSignInWith user: FIRUser?, error: Error?) {
+        
+        if let error = error {
+            assertionFailure("Error sign in: \(error.localizedDescription)")
+            return
+        }
+        print("handle user signup / login")
     }
-    */
-
 }
