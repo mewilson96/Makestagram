@@ -62,13 +62,13 @@ extension LoginViewController: FUIAuthDelegate {
         let userRef = Database.database().reference().child("users").child(user.uid)
         
         //Read the path that was created and pass an event closure to handle the data thatis passed back from the databaseNat
-        userRef.observeSingleEvent(of: .value, with: { (snapshot) in
+        userRef.observeSingleEvent(of: .value, with: { [unowned self] (snapshot) in
             
             //Checking that the snapshot exists
             if let user = User(snapshot: snapshot) {
                 print("Welcome back, \(user.username).")
             } else {
-                print("New user!")
+                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
             }
         })
     }
