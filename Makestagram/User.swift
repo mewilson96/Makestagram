@@ -32,4 +32,25 @@ class User {
         self.uid = snapshot.key
         self.username = username
     }
+    
+    //MARK: - Singleton
+    
+    //private static variable to hold the current user
+    private static var _current: User?
+    
+    //creating a computed variable that only has a getter that can access the private _current variable
+    static var current: User{
+        
+        //check that _current that is of type User? isn't nil. If _current is nil, and current is being read, the guard statement will crash with fatalError()
+        guard let currentUser = _current else {
+            fatalError("Error: current user doesn't exist")
+        }
+        
+        //if _current isn't nil, it'll be returned to the user
+        return currentUser
+    }
+    
+    static func setCurrent(_ user: User) {
+        _current = user
+    }
 }

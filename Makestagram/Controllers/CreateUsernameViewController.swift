@@ -34,12 +34,23 @@ class CreateUsernameViewController: UIViewController {
             let username = usernameTextField.text,
             !username.isEmpty else { return }
         
-        
+        //calling Userservice to create a username in the database
         UserService.create(firUser, username: username) { (user) in
-            guard let user = user else {return}
+            guard let user = user else {
+                return
+            }
             
-            print("Created new user: \(user.username)")
+            User.setCurrent(user)
             
+            //Create a new instance of our main storyboard
+            //setting storyboard  to equal Main.storyboard
+            let storyboard =  UIStoryboard(name: "Main", bundle: .main)
+            
+            //getting reference to the current window and set the rootViewController to the initial view controller
+            if let initialViewController = storyboard.instantiateInitialViewController(){
+                self.view.window?.rootViewController = initialViewController
+                self.view.window?.makeKeyAndVisible()
+            }
         }
         
     }

@@ -13,5 +13,53 @@
             stopOnStyle = "0">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Makestagram/Controllers/CreateUsernameViewController.swift"
+            timestampString = "520452350.938678"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "nextButtonTapped(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Makestagram.CreateUsernameViewController.(nextButtonTapped (__ObjC.UIButton) -&gt; ()).(closure #1)"
+                  moduleName = "Makestagram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marywilson/Desktop/Make%20School%20Projects/Makestagram/Makestagram/Controllers/CreateUsernameViewController.swift"
+                  timestampString = "520452416.397655"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "239">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Makestagram.CreateUsernameViewController.(nextButtonTapped (__ObjC.UIButton) -&gt; ()).(closure #1)"
+                  moduleName = "Makestagram"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/marywilson/Desktop/Make%20School%20Projects/Makestagram/Makestagram/Controllers/CreateUsernameViewController.swift"
+                  timestampString = "520452416.400676"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "308">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
