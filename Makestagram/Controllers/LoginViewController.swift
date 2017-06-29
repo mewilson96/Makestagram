@@ -14,17 +14,17 @@ import FirebaseDatabase
 typealias FIRUser = FirebaseAuth.User
 
 class LoginViewController: UIViewController {
-
+    
     //MARK - Properties
     @IBOutlet weak var loginButton: UIButton!
     
     //MARK -VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     //MARK - IBActions
     @IBAction func loginButtonTapped(_ sender: UIButton) {
         print("Login Button Tapped")
@@ -57,7 +57,7 @@ extension LoginViewController: FUIAuthDelegate {
         //making sure FIRUser has been authenticated with FirebaseAuth and it's not nil
         guard let user = user
             else{ return }
-
+        
         //Create a relative path to the reference of the user's information
         let userRef = Database.database().reference().child("users").child(user.uid)
         
@@ -66,21 +66,26 @@ extension LoginViewController: FUIAuthDelegate {
             
             //Checking that the snapshot exists
             //For users already in the system so they can go to the main storyboard after they've logged in
-            if let user = User(snapshot: snapshot) {
-                User.setCurrent(user)
-                
-                //Create a new instance of our main storyboard
-                //setting storyboard  to equal Main.storyboard
-                let storyboard = UIStoryboard(name: "Main", bundle: .main)
-                
-                if let initialViewController = storyboard.instantiateInitialViewController(){
-                    self.view.window?.rootViewController = initialViewController
-                    self.view.window?.makeKeyAndVisible()
+            UserService.show(forUID: user.uid) { (user) in
+                if let user = User(snapshot: snapshot) {
+                    
+                    //handle existing user
+                    User.setCurrent(user)
+                    
+                    //Create a new instance of our main storyboard
+                    //setting storyboard  to equal Main.storyboard
+                    let storyboard = UIStoryboard(name: "Main", bundle: .main)
+                    
+                    if let initialViewController = storyboard.instantiateInitialViewController(){
+                        self.view.window?.rootViewController = initialViewController
+                    }
                 }
+                else{
+                    self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
+                }
+
             }
-            else{
-                self.performSegue(withIdentifier: "toCreateUsername", sender: self)
-            }
+            
         })
     }
 }
