@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class CreateUsernameViewController: UIViewController {
 
@@ -22,22 +24,38 @@ class CreateUsernameViewController: UIViewController {
         nextButton.layer.cornerRadius = 6
     }
     //MARK: - IBActions
-
+    
+    //create new user in database
+    //whenever a user is created, a user JSON  object will also be created for them within our database
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        //create new user in database
+       
+        //Check to see if FIRUser is logged in and that they have provided  a username in the textfield
+        guard let firUser = Auth.auth().currentUser,
+            let username = usernameTextField.text,
+            !username.isEmpty else { return }
+        
+        //created a dictionary to store the username that the user provided to the database
+        let userAttrs = ["username": username]
+        
+        //Specifying  a relative path for the location of where we want to stor the user's data
+        let ref = Database.database().reference().child("users").child(firUser.uid)
+        
+        
+        //write the data I want to store at the location  we provided above
+        ref.setValue(userAttrs) { (error, ref) in
+            if let error = error {
+                assertionFailure(error.localizedDescription)
+                return
+            }
+            
+            //read the user that was just written into the database and create a user from the snapshot
+            ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                let user = User(snapshot: snapshot)
+            
+            })
+        }
+        
     }
     
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
