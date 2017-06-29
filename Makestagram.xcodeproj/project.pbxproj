@@ -12,6 +12,7 @@
 		C86839561F03F24800375320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839551F03F24800375320 /* LoginViewController.swift */; };
 		C86839581F04309B00375320 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839571F04309B00375320 /* User.swift */; };
 		C868395F1F053ABA00375320 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C868395E1F053ABA00375320 /* CreateUsernameViewController.swift */; };
+		C86839611F05587900375320 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839601F05587900375320 /* UserService.swift */; };
 		C87471351F02A9880051EB5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87471341F02A9880051EB5F /* AppDelegate.swift */; };
 		C874713C1F02A9880051EB5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C874713B1F02A9880051EB5F /* Assets.xcassets */; };
 		C874714B1F02B55E0051EB5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C87471481F02B55E0051EB5F /* Main.storyboard */; };
@@ -28,6 +29,7 @@
 		C86839551F03F24800375320 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		C86839571F04309B00375320 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C868395E1F053ABA00375320 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateUsernameViewController.swift; path = Controllers/CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		C86839601F05587900375320 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		C87471311F02A9870051EB5F /* Makestagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Makestagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C87471341F02A9880051EB5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C874713B1F02A9880051EB5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		C86839621F05588B00375320 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C86839601F05587900375320 /* UserService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
 		C87471281F02A9870051EB5F = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 			children = (
 				C87471341F02A9880051EB5F /* AppDelegate.swift */,
 				C87471531F02B7290051EB5F /* View Controllers */,
+				C86839621F05588B00375320 /* Services */,
 				C87471541F02C2BE0051EB5F /* Storyboards */,
 				C874713B1F02A9880051EB5F /* Assets.xcassets */,
 				C86839591F0430AC00375320 /* Models */,
@@ -262,6 +273,7 @@
 			files = (
 				C86839581F04309B00375320 /* User.swift in Sources */,
 				C86839561F03F24800375320 /* LoginViewController.swift in Sources */,
+				C86839611F05587900375320 /* UserService.swift in Sources */,
 				C87471511F02B5F60051EB5F /* ViewController.swift in Sources */,
 				C868395F1F053ABA00375320 /* CreateUsernameViewController.swift in Sources */,
 				C87471351F02A9880051EB5F /* AppDelegate.swift in Sources */,
