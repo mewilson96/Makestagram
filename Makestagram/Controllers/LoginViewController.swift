@@ -67,18 +67,19 @@ extension LoginViewController: FUIAuthDelegate {
             //Checking that the snapshot exists
             //For users already in the system so they can go to the main storyboard after they've logged in
             UserService.show(forUID: user.uid) { (user) in
-                if let user = User(snapshot: snapshot) {
+                if let user = user {
                     
                     //handle existing user
-                    User.setCurrent(user)
+                    User.setCurrent(user, writeToUserDefaults: true)
                     
                     //Create a new instance of our main storyboard
                     //setting storyboard  to equal Main.storyboard
-                    let storyboard = UIStoryboard(name: "Main", bundle: .main)
+//                    let storyboard = UIStoryboard(name: "Main", bundle: .main)
                     
-                    if let initialViewController = storyboard.instantiateInitialViewController(){
-                        self.view.window?.rootViewController = initialViewController
-                    }
+                    let initialViewController = UIStoryboard.initialViewController(for: .main)
+                    self.view.window?.rootViewController = initialViewController
+                    self.view.window?.makeKeyAndVisible()
+                    
                 }
                 else{
                     self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)

@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        configureInitialRootViewController(for: window)
+        
         //Create an instance of the Login storyboard that has LoginViewController set as its initial view controller
         let storyboard = UIStoryboard(name: "Login", bundle: .main)
 
@@ -64,4 +66,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+ //Determines which storyboard's initial view controller should be set as rootViewController of the window
+extension AppDelegate {
+    func configureInitialRootViewController(for window: UIWindow?){
+        let defaults = UserDefaults.standard
+        let initialViewController: UIViewController
+        
+        if Auth.auth().currentUser != nil,
+            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+            let user = NSKeyedUnarchiver.unarchiveObject(with: userData) as? User {
+        
+            User.setCurrent(user)
+        
+            initialViewController = UIStoryboard.initialViewController(for: .main)
+        }
+        else {
+            initialViewController = UIStoryboard.initialViewController(for: .login)
+        }
+        window?.rootViewController = initialViewController
+        window?.makeKeyAndVisible()
+    
+    }
+}

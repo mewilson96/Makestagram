@@ -40,7 +40,7 @@ class CreateUsernameViewController: UIViewController {
                 return
             }
             
-            User.setCurrent(user)
+            User.setCurrent(user, writeToUserDefaults: true)
             
             //Create a new instance of our main storyboard
             //setting storyboard  to equal Main.storyboard
