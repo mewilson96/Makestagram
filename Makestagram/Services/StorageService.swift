@@ -11,7 +11,7 @@ import FirebaseStorage
 
 struct StorageService{
     
-    static func unploadImage(_ image: UIImage, at reference: StorageReference, completion: @escaping (URL?) -> Void){
+    static func uploadImage(_ image: UIImage, at reference: StorageReference, completion: @escaping (URL?) -> Void){
         
         //change the image from an UIImage to Data to reduce the quality of the image  to reduce upload/ download time
         guard let imageData = UIImageJPEGRepresentation(image, 0.1 ) else{
