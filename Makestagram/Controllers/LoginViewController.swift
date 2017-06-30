@@ -74,7 +74,6 @@ extension LoginViewController: FUIAuthDelegate {
                     
                     //Create a new instance of our main storyboard
                     //setting storyboard  to equal Main.storyboard
-//                    let storyboard = UIStoryboard(name: "Main", bundle: .main)
                     
                     let initialViewController = UIStoryboard.initialViewController(for: .main)
                     self.view.window?.rootViewController = initialViewController
@@ -84,7 +83,7 @@ extension LoginViewController: FUIAuthDelegate {
                 else{
                     self.performSegue(withIdentifier: Constants.Segue.toCreateUsername, sender: self)
                 }
-
+                
             }
             
         })
