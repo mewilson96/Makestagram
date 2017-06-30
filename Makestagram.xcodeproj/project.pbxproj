@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A69743A34E680B8FBA60DFF9 /* Pods_Makestagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E65E31EBB50915F76EFF74D /* Pods_Makestagram.framework */; };
 		C83D5DBD1F06918800E10113 /* MGPhotoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DBC1F06918800E10113 /* MGPhotoHelper.swift */; };
+		C83D5DBF1F06BB5F00E10113 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DBE1F06BB5F00E10113 /* StorageService.swift */; };
+		C83D5DC11F06BFBB00E10113 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DC01F06BFBB00E10113 /* PostService.swift */; };
 		C86839541F03F1A400375320 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86839531F03F1A400375320 /* Login.storyboard */; };
 		C86839561F03F24800375320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839551F03F24800375320 /* LoginViewController.swift */; };
 		C86839581F04309B00375320 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839571F04309B00375320 /* User.swift */; };
@@ -31,6 +33,8 @@
 		2E65E31EBB50915F76EFF74D /* Pods_Makestagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Makestagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71F70981A851E8637FD5B34 /* Pods-Makestagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Makestagram/Pods-Makestagram.debug.xcconfig"; sourceTree = "<group>"; };
 		C83D5DBC1F06918800E10113 /* MGPhotoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MGPhotoHelper.swift; path = Helpers/MGPhotoHelper.swift; sourceTree = "<group>"; };
+		C83D5DBE1F06BB5F00E10113 /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StorageService.swift; path = Services/StorageService.swift; sourceTree = "<group>"; };
+		C83D5DC01F06BFBB00E10113 /* PostService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostService.swift; path = Services/PostService.swift; sourceTree = "<group>"; };
 		C86839531F03F1A400375320 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		C86839551F03F24800375320 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		C86839571F04309B00375320 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,6 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				C86839601F05587900375320 /* UserService.swift */,
+				C83D5DBE1F06BB5F00E10113 /* StorageService.swift */,
+				C83D5DC01F06BFBB00E10113 /* PostService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C86839581F04309B00375320 /* User.swift in Sources */,
+				C83D5DBF1F06BB5F00E10113 /* StorageService.swift in Sources */,
 				C86839561F03F24800375320 /* LoginViewController.swift in Sources */,
 				C868396D1F06821E00375320 /* MainTabBarController.swift in Sources */,
 				C86839611F05587900375320 /* UserService.swift in Sources */,
@@ -311,6 +318,7 @@
 				C86839671F05859300375320 /* Storyboard+Utility.swift in Sources */,
 				C868396B1F05A03200375320 /* FindFriendsViewController.swift in Sources */,
 				C86839641F05822D00375320 /* Constants.swift in Sources */,
+				C83D5DC11F06BFBB00E10113 /* PostService.swift in Sources */,
 				C868395F1F053ABA00375320 /* CreateUsernameViewController.swift in Sources */,
 				C87471351F02A9880051EB5F /* AppDelegate.swift in Sources */,
 			);

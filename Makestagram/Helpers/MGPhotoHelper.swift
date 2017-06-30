@@ -28,15 +28,16 @@ class MGPhotoHelper: NSObject {
         if UIImagePickerController.isSourceTypeAvailable(.camera){
             
             //new UIAlertAction
-            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { action in
-                
+            let capturePhotoAction = UIAlertAction(title: "Take Photo", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .camera, from: viewController)
             })
             //add action to the alerController instance created
             alertController.addAction(capturePhotoAction)
         }
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: {action in
+            let uploadAction = UIAlertAction(title: "Upload from Library", style: .default, handler: { [unowned self] action in
+                self.presentImagePickerController(with: .photoLibrary, from: viewController)
                 
             })
             alertController.addAction(uploadAction)
@@ -48,5 +49,34 @@ class MGPhotoHelper: NSObject {
         
         //present the UIAlertController from  the UIViewController
         viewController.present(alertController, animated: true)
+    }
+    
+    //added method that presents the UIImagePickerController which will allow the user to take pictures
+    func presentImagePickerController(with sourceType: UIImagePickerControllerSourceType, from viewController: UIViewController) {
+        
+        //create instance of UIImagePickerControler. will present a native UI componenet that will allow user to take picture or choose existing photo from their photo library
+        let imagePickerController = UIImagePickerController()
+        
+        //set sourceType to determine whether the UIImagePickerController will activate the camera and display a photo overlay or show the user's photo library
+        imagePickerController.sourceType = sourceType
+        
+        imagePickerController.delegate = self  //sets up delegate property of imagePickerController
+        
+        //imagePickerController is initialed and configured. present the view controller
+        viewController.present(imagePickerController, animated: true)
+    }
+}
+
+extension MGPhotoHelper: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+            completionHandler?(selectedImage)
+        }
+        
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
     }
 }
