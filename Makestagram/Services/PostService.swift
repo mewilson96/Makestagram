@@ -35,6 +35,7 @@ struct PostService {
         
         //convert the new post object into a dictionary so it can be written as JSON in our database
         let dict = post.dictValue
+        print("DICT: ",dict)
         
         //construct the relative path to the location where we want to store the new post data
         let postRef = Database.database().reference().child("posts").child(currentUser.uid).childByAutoId()

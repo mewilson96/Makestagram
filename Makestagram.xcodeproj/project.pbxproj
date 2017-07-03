@@ -15,6 +15,10 @@
 		C83D5DC51F06D13200E10113 /* UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DC41F06D13200E10113 /* UIImage+Size.swift */; };
 		C83D5DC71F06D2B300E10113 /* StorageReference+Porst.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DC61F06D2B300E10113 /* StorageReference+Porst.swift */; };
 		C83D5DC91F06D7C400E10113 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C83D5DC81F06D7C400E10113 /* Home.storyboard */; };
+		C83D5DCC1F094D6900E10113 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DCB1F094D6900E10113 /* PostImageCell.swift */; };
+		C83D5DCE1F09C89700E10113 /* PostHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DCD1F09C89700E10113 /* PostHeaderCell.swift */; };
+		C83D5DD01F09D2A600E10113 /* PostActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DCF1F09D2A600E10113 /* PostActionCell.swift */; };
+		C83D5DD21F0A765100E10113 /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83D5DD11F0A765100E10113 /* LikeService.swift */; };
 		C86839541F03F1A400375320 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86839531F03F1A400375320 /* Login.storyboard */; };
 		C86839561F03F24800375320 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839551F03F24800375320 /* LoginViewController.swift */; };
 		C86839581F04309B00375320 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86839571F04309B00375320 /* User.swift */; };
@@ -43,6 +47,10 @@
 		C83D5DC41F06D13200E10113 /* UIImage+Size.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+Size.swift"; path = "Extensions/UIImage+Size.swift"; sourceTree = "<group>"; };
 		C83D5DC61F06D2B300E10113 /* StorageReference+Porst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "StorageReference+Porst.swift"; path = "Extensions/StorageReference+Porst.swift"; sourceTree = "<group>"; };
 		C83D5DC81F06D7C400E10113 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Home.storyboard; path = Storyboards/Home.storyboard; sourceTree = "<group>"; };
+		C83D5DCB1F094D6900E10113 /* PostImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostImageCell.swift; path = Views/PostImageCell.swift; sourceTree = "<group>"; };
+		C83D5DCD1F09C89700E10113 /* PostHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostHeaderCell.swift; sourceTree = "<group>"; };
+		C83D5DCF1F09D2A600E10113 /* PostActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostActionCell.swift; path = Views/PostActionCell.swift; sourceTree = "<group>"; };
+		C83D5DD11F0A765100E10113 /* LikeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LikeService.swift; path = Services/LikeService.swift; sourceTree = "<group>"; };
 		C86839531F03F1A400375320 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Login.storyboard; path = Storyboards/Login.storyboard; sourceTree = "<group>"; };
 		C86839551F03F24800375320 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		C86839571F04309B00375320 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,6 +107,16 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		C83D5DCA1F094AE600E10113 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C83D5DCB1F094D6900E10113 /* PostImageCell.swift */,
+				C83D5DCD1F09C89700E10113 /* PostHeaderCell.swift */,
+				C83D5DCF1F09D2A600E10113 /* PostActionCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		C86839591F0430AC00375320 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +132,7 @@
 				C86839601F05587900375320 /* UserService.swift */,
 				C83D5DBE1F06BB5F00E10113 /* StorageService.swift */,
 				C83D5DC01F06BFBB00E10113 /* PostService.swift */,
+				C83D5DD11F0A765100E10113 /* LikeService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -150,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				C87471341F02A9880051EB5F /* AppDelegate.swift */,
+				C83D5DCA1F094AE600E10113 /* Views */,
 				C87471531F02B7290051EB5F /* View Controllers */,
 				C83D5DBB1F06911F00E10113 /* Helpers */,
 				C86839621F05588B00375320 /* Services */,
@@ -326,7 +346,10 @@
 				C86839561F03F24800375320 /* LoginViewController.swift in Sources */,
 				C868396D1F06821E00375320 /* MainTabBarController.swift in Sources */,
 				C86839611F05587900375320 /* UserService.swift in Sources */,
+				C83D5DD01F09D2A600E10113 /* PostActionCell.swift in Sources */,
+				C83D5DD21F0A765100E10113 /* LikeService.swift in Sources */,
 				C86839691F05A01C00375320 /* HomeViewController.swift in Sources */,
+				C83D5DCC1F094D6900E10113 /* PostImageCell.swift in Sources */,
 				C83D5DC51F06D13200E10113 /* UIImage+Size.swift in Sources */,
 				C83D5DBD1F06918800E10113 /* MGPhotoHelper.swift in Sources */,
 				C86839671F05859300375320 /* Storyboard+Utility.swift in Sources */,
@@ -336,6 +359,7 @@
 				C83D5DC11F06BFBB00E10113 /* PostService.swift in Sources */,
 				C868395F1F053ABA00375320 /* CreateUsernameViewController.swift in Sources */,
 				C83D5DC71F06D2B300E10113 /* StorageReference+Porst.swift in Sources */,
+				C83D5DCE1F09C89700E10113 /* PostHeaderCell.swift in Sources */,
 				C87471351F02A9880051EB5F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

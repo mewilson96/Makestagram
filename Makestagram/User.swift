@@ -18,13 +18,6 @@ class User: NSObject {
     
     //MARK: - Init
     
-    init(uid: String, username: String){
-        self.uid = uid
-        self.username = username
-        
-        super.init()
-    }
-    
     //creating failable initializer so if user doesn't have a UID or username it'll fail initialization and return nil
     init?(snapshot: DataSnapshot) {
         
@@ -37,6 +30,14 @@ class User: NSObject {
         
         super.init()
     }
+    
+    init(uid: String, username: String){
+        self.uid = uid
+        self.username = username
+        
+        super.init()
+    }
+
     
     //allows user to be decoded form data
     required init?(coder aDecoder: NSCoder) {

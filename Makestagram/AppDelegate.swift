@@ -9,13 +9,14 @@
 import UIKit
 import Firebase
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
 
-    
+    // now set to keep user logged in 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
@@ -23,21 +24,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureInitialRootViewController(for: window)
         
         //Create an instance of the Login storyboard that has LoginViewController set as its initial view controller
-        let storyboard = UIStoryboard(name: "Login", bundle: .main)
-
-        
-        //Check if storyboard has initial view controller set
-        if let initialViewController = storyboard.instantiateInitialViewController(){
-          
-           
-            
-            //If the storyboard's initial view controller exiests, set it ito the window's rootViewController property
-            window?.rootViewController = initialViewController
-
-            //Position the window above any other existing windows
-            window?.makeKeyAndVisible()
-
-        }
+//        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+//
+//        
+//        //Check if storyboard has initial view controller set
+//        if let initialViewController = storyboard.instantiateInitialViewController(){
+//          
+//           
+//            
+//            //If the storyboard's initial view controller exiests, set it ito the window's rootViewController property
+//            window?.rootViewController = initialViewController
+//
+//            //Position the window above any other existing windows
+//            window?.makeKeyAndVisible()
+//
+//        }
 
         return true
     }
