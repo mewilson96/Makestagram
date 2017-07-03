@@ -82,7 +82,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostActionCell") as! PostActionCell
-            cell.timeAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+            cell.delegate = self
+            configureCell(cell, with: post)
             
             return cell
         
@@ -90,6 +91,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
             fatalError("Error: unexpected indexPath.")
         }
     }
+    func configureCell(_ cell: PostActionCell, with post: Post) {
+        cell.timeAgoLabel.text = timestampFormatter.string(from: post.creationDate)
+        cell.likeButton.isSelected = post.isLiked
+        cell.likeCountLabel.text = "\(post.likeCount) likes"
+    }
+    
     
     //MARK: UTITableViewDelegate
     
@@ -114,5 +121,45 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return posts.count
+    }
+}
+
+extension HomeViewController: PostActionCellDelegate {
+    func didTapLikeButton(_ likeButton: UIButton, on cell: PostActionCell) {
+        
+        //make sure a path exists for the given cell. we'll need it to reference the correct post
+        guard let indexPath = tableView.indexPath(for: cell)
+            else { return }
+        
+        //set isUserInteractionEnabled property of the UIButtonto false so the user dones't accidently send multiple requests by tapping too quickly
+        likeButton.isUserInteractionEnabled = false
+        
+        //reference the correct post corresponding with the PostActionCell that the user tapped
+        let post = posts[indexPath.section]
+        
+        //use LikeService to like or unlike the post based on the isLiked property
+        LikeService.setIsLike(!post.isLiked, for: post) { (success) in
+            
+            //use defer to set isUserInteractionEnabled to true whenever the closure returns
+            defer {
+                likeButton.isUserInteractionEnabled = true
+            }
+            
+            //basic error handling in case something goes wrong
+            guard success else {return}
+            
+            //change the likeCount and isLiked properties of our post if our network request was sucessful
+            post.likeCount += !post.isLiked ? 1 : -1
+            post.isLiked = !post.isLiked
+            
+            //get a reference to the current cell
+            guard let cell = self.tableView.cellForRow(at: indexPath) as? PostActionCell
+                else { return }
+            
+            //update the UI of the cell on the main thread
+            DispatchQueue.main.async {
+                self.configureCell(cell, with: post)
+            }
+        }
     }
 }

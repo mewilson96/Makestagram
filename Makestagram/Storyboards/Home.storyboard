@@ -99,6 +99,7 @@
                                                         <constraint firstAttribute="width" secondItem="v3I-Tr-14l" secondAttribute="height" multiplier="29:24" id="gsb-bX-bJZ"/>
                                                     </constraints>
                                                     <state key="normal" image="btn_heart_black_outline"/>
+                                                    <state key="selected" image="btn_heart_red_solid"/>
                                                     <connections>
                                                         <action selector="likeButtonTapped:" destination="0jT-FZ-daN" eventType="touchUpInside" id="bF8-FB-JRZ"/>
                                                     </connections>
@@ -194,6 +195,7 @@
     </scenes>
     <resources>
         <image name="btn_heart_black_outline" width="24" height="24"/>
+        <image name="btn_heart_red_solid" width="24" height="24"/>
         <image name="btn_options_black" width="24" height="24"/>
         <image name="tab_home_black" width="25" height="25"/>
     </resources>

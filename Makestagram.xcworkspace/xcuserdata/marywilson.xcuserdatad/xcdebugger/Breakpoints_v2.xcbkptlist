@@ -367,11 +367,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Makestagram/Controllers/HomeViewController.swift"
-            timestampString = "520788575.548871"
+            timestampString = "520803709.38521"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "tableView(_:heightForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>

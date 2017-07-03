@@ -17,6 +17,7 @@ class Post {
     let creationDate: Date
     var likeCount: Int
     let poster: User
+    var isLiked = false
     var dictValue: [String: Any] {
         
         let createdAgo = creationDate.timeIntervalSince1970
