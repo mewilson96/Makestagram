@@ -48,7 +48,9 @@ class Post {
             let userDict = dict["poster"] as? [String: Any],
             let uid = userDict["uid"] as? String,
             let username = userDict["username"] as? String
-            else {return nil}
+            else {
+                return nil
+        }
         
         self.key = snapshot.key
         self.imageURL = imageURL

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
 
     //MARK: - Properties
     var posts = [Post]()
-    
+    let refreshControl = UIRefreshControl()
     let timestampFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -32,6 +32,22 @@ class HomeViewController: UIViewController {
         
         //remove seperators from cells
         tableView.separatorStyle = .none
+        
+        //add pull to refresh
+        refreshControl.addTarget(self, action: #selector(reloadTimeline), for: .valueChanged)
+        tableView.addSubview(refreshControl)
+    }
+    
+    func reloadTimeline() {
+        UserService.timeline { (posts) in
+            self.posts = posts
+            
+            if self.refreshControl.isRefreshing{
+                self.refreshControl.endRefreshing()
+            }
+            
+            self.tableView.reloadData()
+        }
     }
     //MARK: - VC Lifecycle
     
@@ -39,13 +55,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         configureTableView()
-
-        //fetching other posts from Firebase
-        UserService.posts(for: User.current) { (posts) in
-            self.posts = posts
-            print(posts)
-            self.tableView.reloadData()
-        }
+        reloadTimeline()
+        
     }
 
 }

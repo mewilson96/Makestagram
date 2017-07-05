@@ -11,6 +11,18 @@ import FirebaseAuth.FIRUser
 import FirebaseDatabase
 
 struct UserService {
+    
+    static func followers(for user: User, completion: @escaping ([String]) -> Void) {
+        let followersRef = Database.database().reference().child("followers").child(user.uid)
+        
+        followersRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let followersDict = snapshot.value as? [String: Bool] else {
+                return completion([])
+            }
+                let followersKeys = Array(followersDict.keys)
+                completion(followersKeys)
+        })
+    }
     static func create(_ firUser: FIRUser, username: String, completion: @escaping (User?) -> Void) {
         
         //creating a dictionary to store the username that the user provided to the database
@@ -76,6 +88,77 @@ struct UserService {
             })
             
             
+        })
+    }
+    
+    static func timeline(completion: @escaping ([Post]) -> Void) {
+        let currentUser = User.current
+        
+        let timelineRef = Database.database().reference().child("timeline").child(currentUser.uid)
+        timelineRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else {return completion([]) }
+        
+            let dispatchGroup = DispatchGroup()
+        
+            var posts = [Post]()
+        
+            for postSnap in snapshot {
+                guard let postDict = postSnap.value as? [String: Any],
+                    let posterUID = postDict["poster_uid"] as? String
+                    else { continue }
+        
+                dispatchGroup.enter()
+        
+                PostService.show(forKey: postSnap.key, posterUID: posterUID) { (post) in
+                    if let post = post {
+                        posts.append(post)
+                    }
+        
+                    dispatchGroup.leave()
+                }
+            }
+        
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(posts.reversed())
+        
+            })
+        })
+    }
+    
+    static func usersExcludingCurrentUser(completion: @escaping ([User]) -> Void) {
+        let currentUser = User.current
+        
+        //create a DatabaseReference to read all users from the database
+        let ref = Database.database().reference().child("users")
+        
+        //read the users node from the database
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+                else { return completion([]) }
+            
+            //take snapshot and convert all the child DataSnapshot into User using our failable initializer then filter out the currentuser objevt from the User array
+            let users =
+                snapshot
+                    .flatMap(User.init)
+                    .filter {$0.uid != currentUser.uid }
+            
+            //create a new DispatchGroup so that we can be notified when all asynchronous taks are finished executing. using the notify(queue:) method on DispatchGroup as a completion handler for when all follow data has been read
+            let dispatchGroup = DispatchGroup()
+            users.forEach { (user) in
+                dispatchGroup.enter()
+                
+                //make a request for each individual user to determine if the user if being followed by current user
+                FollowService.isUserFollowed(user) { (isFollowed) in
+                    user.isFollowed = isFollowed
+                    dispatchGroup.leave()
+                }
+            }
+            
+            //run the completion block after all follow relationship data has returned
+            dispatchGroup.notify(queue: .main, execute: {
+                completion(users)
+            })
         })
     }
 }
